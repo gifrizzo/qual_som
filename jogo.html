@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>QUE SOM É ESSE?</title>
+</head>
+<body>
+    <section class="inicio">
+        <h1>QUE SOM É ESSE?</h1>  
+        <button class="facil">FÁCIL</button>
+        <button class="dificil">DIFÍCIL</button>
+        <img src="img/porco-pensativo.png">
+    </section>
+
+    <section class="fase1">
+        <header>
+            <p>
+                <img src="img/certo.png">
+                ACERTOS:<span class="acertos1">0</span>
+            </p>
+
+            <p>
+                <img src="img/tempo.png">
+                <span class="tempo1">0</span>s
+            </p>
+
+        </header>
+        <div>
+            <h1>QUE SOM É ESSE?</h1>
+            <h2>Serão tocados dois sons simultaneamente e seu desafio é adivinhar os animais que os estão reproduzindo!</h2>
+            <ul>
+              <li><img class="errado" src="img/vaca.png"></li>
+              <li><img class="certo c1" src="img/porco.png"></li>
+              <li><img class="errado" src="img/abelha.png"></li>
+              <li><img class="errado" src="img/galo.png"></li>
+              <li><img class="errado" src="img/pato.png"></li>
+              <li><img class="certo c2" src="img/gato.png"></li>
+              <li><img class="errado" src="img/cachorro.png"></li>
+              <li><img class="errado" src="img/cavalo.png"></li>
+              <li><img class="errado" src="img/sapo.png"></li>
+            </ul>
+
+            <button class="comecar">COMEÇAR</button>
+        </div>
+    </section>
+
+    <section class="fase2">
+        <header>
+            <p>
+                <img src="img/certo.png">
+                ACERTOS:<span class="acertos2">0</span>
+            </p>
+
+            <p>
+                <img src="img/tempo.png">
+                <span class="tempo2">0</span>s
+            </p>
+
+        </header>
+        <div>
+            <h1>QUE SOM É ESSE?</h1>
+            <h2>Serão tocados três sons simultaneamente e seu desafio é adivinhar os animais que os estão reproduzindo!</h2>
+            <ul>
+              <li><img class="errado" src="img/vaca.png"></li>
+              <li><img class="errado" src="img/porco.png"></li>
+              <li><img class="errado" src="img/abelha.png"></li>
+              <li><img class="certo c1" src="img/galo.png"></li>
+              <li><img class="errado" src="img/pato.png"></li>
+              <li><img class="errado" src="img/gato.png"></li>
+              <li><img class="certo c2" src="img/cachorro.png"></li>
+              <li><img class="certo c3" src="img/cavalo.png"></li>
+              <li><img class="errado" src="img/sapo.png"></li>
+            </ul>
+
+            <button class="comecar">COMEÇAR</button>
+        </div>
+    </section>
+
+    <section class="desempenho d1">
+            <h1>VOCÊ CHEGOU AO FIM DO JOGO!</h1>
+        <p>
+            <img src="img/erros.png">
+            <span class="erros1" id="errosId1">0</span>
+            <span>erros</span>
+        </p>
+        <p>
+            <img src="img/tempo.png">
+            <span class="tempo" id="tempoId1">0</span>
+        </p>
+        <button>JOGAR NOVAMENTE</button>
+    </section>
+
+    <section class="desempenho d2">
+        <h1>VOCÊ CHEGOU AO FIM DO JOGO!</h1>
+    <p>
+        <img src="img/erros.png">
+        <span class="erros2" id="errosId2">0</span>
+        <span>erros</span>
+    </p>
+    <p>
+        <img src="img/tempo.png">
+        <span class="tempo" id="tempoId2">0</span>
+    </p>
+    <button>JOGAR NOVAMENTE</button>
+</section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+    function load(){
+      somGato = new Audio("musica/gato.mp3");
+
+      somPorco = new Audio("musica/porco.mp3");
+
+      somGalo = new Audio("musica/galo.mp3");
+
+      somCachorro = new Audio("musica/cachorro.mp3");
+
+      somCavalo = new Audio("musica/cavalo.mp3");
+    }
+    
+    load();
+        $("section.inicio button.facil").on("click", function(){
+            $("section").hide();
+            $("section.fase1").show();
+        });
+
+        $("section.inicio button.dificil").on("click", function(){
+            $("section").hide();
+            $("section.fase2").show();
+        });
+
+    /* ======================== FACIL ============================ */
+    
+        $("section.fase1 button.comecar").one("click", function(){
+            contagemDeTempo = setInterval(function(){
+            var conteudoTempo = parseInt($("span.tempo1").text());
+            var soma = conteudoTempo + 1;
+            $("span.tempo1").text(soma);
+            $("#tempoId1").text(soma+"s");
+            }, 1000);
+
+            somGato.play();
+            somPorco.play();
+
+            $("section.fase1 img.certo").one("click", function(){
+            $(this).css({opacity : 0.5});
+            var acertos = parseInt($("span.acertos1").text());
+            var somaAcertos = acertos + 1;
+            $("span.acertos1").text(somaAcertos);
+
+            if (somaAcertos==2) {
+                $("section").hide();
+                $("section.desempenho").show();
+                clearInterval(contagemDeTempo);            
+            }
+        });
+
+        $("section.fase1 img.errado").one("click", function(){
+            $(this).css({opacity : 0.5});
+            var erros = parseInt($("span.erros1").text());
+            var somaErros = erros + 1;
+            $("span.erros1").text(somaErros);
+            $("#errosId1").text(somaErros);
+        });
+
+        $("section.fase1 img.c1").on("click", function(){
+            somPorco.pause();
+        });
+
+        $("section.fase1 img.c2").on("click", function(){
+            somGato.pause();
+        });
+        });
+
+        /* ======================== DIFICIL ============================ */
+
+        $("section.fase2 button.comecar").one("click", function(){
+            contagemDeTempo = setInterval(function(){
+            var conteudoTempo = parseInt($("span.tempo2").text());
+            var soma = conteudoTempo + 1;
+            $("span.tempo2").text(soma);
+            $("#tempoId2").text(soma+"s");
+            }, 1000);
+
+            somCachorro.play();
+            somGalo.play();
+            somCavalo.play();
+
+            $("section.fase2 img.certo").one("click", function(){
+            $(this).css({opacity : 0.5});
+            var acertos = parseInt($("span.acertos2").text());
+            var somaAcertos = acertos + 1;
+            $("span.acertos2").text(somaAcertos);
+            $("#acertosId2").text(somaAcertos);
+
+            if (somaAcertos==3) {
+                $("section").hide();
+                $("section.d2").show();
+                clearInterval(contagemDeTempo); 
+            }
+        });
+
+        $("section.fase2 img.errado").one("click", function(){
+            $(this).css({opacity : 0.5});
+            var erros = parseInt($("span.erros2").text());
+            var somaErros = erros + 1;
+            $("span.erros2").text(somaErros);
+            $("#errosId2").text(somaErros);
+        });
+
+        $("section.fase2 img.c1").on("click", function(){
+            somGalo.pause();
+        });
+
+        $("section.fase2 img.c2").on("click", function(){
+            somCachorro.pause();
+        });
+
+        $("section.fase2 img.c3").on("click", function(){
+            somCavalo.pause();
+        });
+        });
+
+        /* ======================== DESEMPENHO ============================ */
+
+        $("section.desempenho button").on("click", function(){
+            window.location.reload(true);
+            $("section").hide();
+            $("section.inicio").show();
+        });
+
+    </script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

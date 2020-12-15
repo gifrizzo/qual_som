@@ -1,0 +1,156 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    background:linear-gradient(to bottom, #3E9E9E, rgb(170, 211, 211));
+}
+
+section, body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+section.inicio{
+    text-align: center;
+}
+
+section.inicio h1{
+    font-size: 4.5em;
+    margin: 8vh 0 0 0;
+}
+
+section.inicio button.facil{
+    font-size: 1.5em;
+    margin: 5vh 1vw 0 1vw;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    background-color: yellowgreen;
+    color: white;
+    box-shadow: 5px 5px 3px -3px rgba(65, 64, 64, 0.5);
+}
+
+section.inicio button.dificil{
+    font-size: 1.5em;
+    margin: 5vh 1vw 0 1vw;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    background-color: tomato;
+    color: white;
+    box-shadow: 5px 5px 3px -3px rgba(65, 64, 64, 0.5);
+}
+
+
+section.inicio img{
+    width: 50vh;
+    margin: 5vh 0 0 10vw; 
+}
+
+section.fase1, section.fase2{
+    text-align: left;
+}
+
+section.fase1 header, section.fase2 header{
+    height: 10vh;
+    background: #F0A5A0;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+section.fase1 header p img, section.fase2 header p img{
+    height: 5vh;
+    position: relative;
+    padding: 5px 0 0 3px;
+    font-size: 1em;
+    top: 3px;
+}
+
+section.fase1 header p span, section.fase2 header p span{
+    font-size: 1em;
+}
+
+section.fase1 div{
+    background:linear-gradient(to bottom, yellowgreen, rgb(188, 214, 137));
+    height: 90vh;
+    padding: 4vh 5vw 0 5vw;
+}
+
+section.fase2 div{
+    background:linear-gradient(to bottom, rgb(245, 106, 81), rgb(241, 145, 128));
+    height: 92vh;
+    padding: 4vh 5vw 0 5vw;
+}
+
+section.fase1 div h1, section.fase2 div h1{
+    font-size: 2em;
+    margin: 0 0 0 2vw ;
+}
+
+section.fase1 div h2, section.fase2 div h2{
+    font-size: 1em;
+    margin: 1.5vh 0 5vh 2vw;
+}
+
+section.fase1 div ul, section.fase2 div ul{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+section.fase1 div ul li, section.fase2 div ul li{
+    width: 25vw;
+    height: 25vw;
+    margin: 0vh 1vw 4vh 1vw;
+}
+
+section.fase1 div ul li img, section.fase2 div ul li img{
+    width: 100%;
+    border: 3px solid #e3d7cb;
+    box-shadow: 5px 5px 3px -3px rgba(65, 64, 64, 0.5);
+}
+
+section.fase1 div button, section.fase2 div button{
+    background: #F0A5A0;
+    font-size: 1.2em;
+    margin: 1vh 0 0 27vw;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 5px 5px 3px -3px rgba(65, 64, 64, 0.5);
+}
+
+section.desempenho{
+    padding: 8vh 5vw;
+}
+
+section.desempenho h1{
+    font-size: 3em;
+    text-align: center;
+    margin: 5vh;
+}
+
+section.desempenho img{
+    height: 8vh;
+    padding: 2vh 0 0 16vw;
+    text-align: left;
+}
+
+section.desempenho p span{
+    font-size: 2.8em;
+}
+
+section.desempenho button{
+    background: #F0A5A0;
+    font-size: 1.5em;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 5px 5px 3px -3px rgba(65, 64, 64, 0.5);
+    margin: 7vh 7vw;
+}
